@@ -1,0 +1,26 @@
+{
+  "name": "assignment-01",
+  "version": "1.0.0",
+  "description": "101412150 - COMP3123 - Assignment01",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "REST",
+    "API",
+    "Node",
+    "Express",
+    "Mongo"
+  ],
+  "author": "Aadi Badola",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.0",
+    "express-validator": "^7.2.0",
+    "mongoose": "^8.6.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.6"
+  }
+}

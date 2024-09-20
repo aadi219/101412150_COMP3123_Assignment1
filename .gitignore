@@ -1,0 +1,5 @@
+# assignment instructions
+*.pdf
+
+# node packages
+node_modules
