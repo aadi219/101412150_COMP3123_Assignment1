@@ -1,6 +1,8 @@
 import express from "express";
 import mongoose from "mongoose";
 import dbConfig from "./data/config.js";
+import bodyParser from "body-parser";
+import { userRoutes, empRoutes } from "./routes/index.js";
 
 const app = express();
 const PORT = 8082;
@@ -20,6 +22,12 @@ mongoose
       err,
     );
   });
+
+// middleware
+app.use(bodyParser.json());
+// use routing
+const endpoint = "/api/v1";
+app.use(`${endpoint}/user`, userRoutes);
 
 // start server
 const server = app.listen(PORT, () => {
