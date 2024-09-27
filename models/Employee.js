@@ -8,6 +8,7 @@ const EmployeeSchema = mongoose.Schema(
     position: String,
     date_of_joining: Date,
     department: String,
+    salary: Number,
   },
   {
     timestamps: true,
