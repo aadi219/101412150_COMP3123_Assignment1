@@ -28,6 +28,7 @@ app.use(bodyParser.json());
 // use routing
 const endpoint = "/api/v1";
 app.use(`${endpoint}/user`, userRoutes);
+app.use(`${endpoint}/emp`, empRoutes);
 
 // start server
 const server = app.listen(PORT, () => {
