@@ -7,3 +7,19 @@ export const validateUserLogin = () => [
   body("password", "Password cannot be empty").notEmpty(),
 ];
 
+export const validateUserSignup = () =>
+  checkSchema({
+    username: {
+      notEmpty: true,
+      errorMessage: "Please provide a valid username."
+    },
+    email: {
+      notEmpty: true,
+      isEmail: true,
+      errorMessage: "Please provide a valid email."
+    },
+    password: {
+      notEmpty: true,
+      errorMessage: "Please provide a valid password."
+    },
+  });
