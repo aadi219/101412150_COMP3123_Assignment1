@@ -1,7 +1,6 @@
 import express from "express";
 import mongoose from "mongoose";
 import dbConfig from "./data/config.js";
-import bodyParser from "body-parser";
 import { userRoutes, empRoutes } from "./routes/index.js";
 
 const app = express();
@@ -16,7 +15,7 @@ mongoose
   .then(() => {
     console.log("Connected to Mongo Database");
   })
-  .catch(() => {
+  .catch((err) => {
     console.err(
       `[ERR] Error occurred when attempting to connect to MongoDB: `,
       err,
@@ -24,7 +23,7 @@ mongoose
   });
 
 // middleware
-app.use(bodyParser.json());
+app.use(express.json());
 // use routing
 const endpoint = "/api/v1";
 app.use(`${endpoint}/user`, userRoutes);
