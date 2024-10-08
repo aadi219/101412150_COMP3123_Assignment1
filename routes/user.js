@@ -1,8 +1,10 @@
 import User from "../models/User.js";
 import express from "express";
+import { validateUserLogin, validateUserSignup } from "../middleware/validation/user.js";
+import { validate } from "../middleware/validation/validate.js";
 const router = express.Router();
 
-router.post("/signup", async (req, res) => {
+router.post("/signup", validateUserSignup(), validate, async (req, res) => {
   const { username, email, password } = req.body;
   const user = new User({ username, email, password });
   await user.save();
@@ -12,7 +14,7 @@ router.post("/signup", async (req, res) => {
   });
 });
 
-router.post("/login", async (req, res) => {
+router.post("/login", validateUserLogin, validate, async (req, res) => {
   const { username, email, password } = req.body;
   if (!(username || email)) {
     return res.status(400).json({ error: "Please provide username or email" });
