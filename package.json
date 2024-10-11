@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "101412150 - COMP3123 - Assignment01",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
   },
   "keywords": [
     "REST",
@@ -16,6 +18,8 @@
   "author": "Aadi Badola",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.4.5",
     "express": "^4.21.0",
     "express-validator": "^7.2.0",
     "mongoose": "^8.6.3"
