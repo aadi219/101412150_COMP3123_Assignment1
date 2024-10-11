@@ -14,7 +14,7 @@ router.post("/signup", validateUserSignup(), validate, async (req, res) => {
   });
 });
 
-router.post("/login", validateUserLogin, validate, async (req, res) => {
+router.post("/login", validateUserLogin(), validate, async (req, res) => {
   const { username, email, password } = req.body;
   if (!(username || email)) {
     return res.status(400).json({ error: "Please provide username or email" });
