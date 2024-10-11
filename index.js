@@ -1,26 +1,13 @@
 import express from "express";
-import mongoose from "mongoose";
-import dbConfig from "./data/config.js";
+import connectToDB from "./data/connectToDB.js";
+import dotenv from "dotenv";
 import { userRoutes, empRoutes } from "./routes/index.js";
 
+dotenv.config();
 const app = express();
-const PORT = 8082;
+const PORT = process.env.SERVER_PORT || 8082;
 
-const connString = `mongodb://${dbConfig.user}:${dbConfig.password}@${dbConfig.host}:${dbConfig.port}/${dbConfig.database}`;
-// connect to mongoDB
-mongoose
-  .connect(connString, {
-    authSource: "admin",
-  })
-  .then(() => {
-    console.log("Connected to Mongo Database");
-  })
-  .catch((err) => {
-    console.err(
-      `[ERR] Error occurred when attempting to connect to MongoDB: `,
-      err,
-    );
-  });
+connectToDB();
 
 // middleware
 app.use(express.json());
