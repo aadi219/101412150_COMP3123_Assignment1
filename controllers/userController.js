@@ -22,11 +22,18 @@ const login = async (req, res) => {
   const user = await User.findOne({
     $or: [{ username: username }, { email: email }],
   });
-  const validPass = await bcrypt.compare(password, user.password); 
-  if (!validPass) {
+  let success = false;
+  if (user) {
+    const validPass = await bcrypt.compare(password, user.password);
+    if (validPass) {
+      success = true;
+    }
+  }
+  if (success) {
+    return res.status(200).json({ message: "Login successful." });
+  } else {
     return res.status(404).json({ error: "Invalid credentials" });
   }
-  return res.status(200).json({ message: "Login successful." });
 };
 
 export default {

@@ -16,6 +16,16 @@ const endpoint = "/api/v1";
 app.use(`${endpoint}/user`, userRoutes);
 app.use(`${endpoint}/emp`, empRoutes);
 
+// error
+app.use((err, req, res, next) => {
+  if (err) {
+    console.error("[ERROR] error occurred while processing request at " + req.path);
+    res.status(500).send("An unexpected error occurred!");
+  } else {
+    next();
+  }
+})
+
 // start server
 const server = app.listen(PORT, () => {
   console.log(`Server is listening on PORT: ${PORT}`);
