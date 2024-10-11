@@ -46,7 +46,6 @@ const updateEmployeeById = async (req, res) => {
   const id = req.params.eid;
   try {
     await Employee.findByIdAndUpdate(id, req.body);
-    //await Employee.save();
     return res.status(200).json({ message: "Employee updated successfully." });
   } catch (err) {
     console.error("[ERROR] Could not update Employee", err);
