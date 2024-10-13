@@ -1,5 +1,6 @@
 import { body, validationResult } from "express-validator";
 
+// parse errors after validation and return response to user
 export const validate = (req, res, next) => {
   const errors = validationResult(req);
   if (errors.isEmpty()) {

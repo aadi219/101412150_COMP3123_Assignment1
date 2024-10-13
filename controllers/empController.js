@@ -1,5 +1,7 @@
 import Employee from "../models/Employee.js";
 
+// implementations for all methods to resolve requests to the employee endpoints
+
 const getAllEmployees = async (req, res) => {
   const employees = await Employee.find({});
   return res.status(200).json(employees);

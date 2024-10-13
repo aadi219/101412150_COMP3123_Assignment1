@@ -1,5 +1,6 @@
 import { param, checkSchema } from "express-validator";
 
+// validate if incoming employee details in request are valid
 export const validateEmployeeCreate = () => checkSchema({
   first_name: {
     errorMessage: "Please provide a first name.",

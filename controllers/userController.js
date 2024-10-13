@@ -1,6 +1,8 @@
 import User from "../models/User.js";
 import bcrypt from "bcrypt";
 
+// implementations for all methods to resolve requests to the user endpoints
+
 const signup = async (req, res) => {
   const { username, email, password } = req.body;
   const salt = await bcrypt.genSalt(10);

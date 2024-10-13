@@ -1,6 +1,7 @@
 import dbConfig from "./config.js";
 import mongoose from "mongoose";
 
+// function to establish connection to mongo database
 const connectToDb = () => {
   // connect to mongoDB
   const connString = `mongodb+srv://${dbConfig.user}:${dbConfig.password}@cluster0.tfwphvd.mongodb.net/${dbConfig.database}?retryWrites=true&w=majority&appName=Cluster0`;

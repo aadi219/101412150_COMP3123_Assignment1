@@ -6,3 +6,7 @@ node_modules
 
 # environment variables
 .env
+
+# submission documents
+submission
+*.zip
