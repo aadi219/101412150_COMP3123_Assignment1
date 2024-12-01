@@ -1,7 +1,11 @@
 import User from "../models/User.js";
 import bcrypt from "bcrypt";
-
+import jwt from "jsonwebtoken";
+import dotenv from 'dotenv';
 // implementations for all methods to resolve requests to the user endpoints
+
+dotenv.config();
+const JWT_SECRET= process.env.JWT_SECRET || 'myJWTSecret';
 
 const signup = async (req, res) => {
   const { username, email, password } = req.body;
@@ -32,7 +36,11 @@ const login = async (req, res) => {
     }
   }
   if (success) {
-    return res.status(200).json({ message: "Login successful." });
+    const id = user._id;
+    const token = jwt.sign({id}, JWT_SECRET, {
+      expiresIn: "1h",
+    })
+    return res.status(200).json({ message: "Login successful.", token: token, user: user });
   } else {
     return res.status(404).json({ error: "Invalid credentials" });
   }

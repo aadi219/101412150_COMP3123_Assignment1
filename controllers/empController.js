@@ -55,6 +55,14 @@ const updateEmployeeById = async (req, res) => {
   }
 };
 
+const filterEmployees = async (req, res) => {
+  const criteria = req.query.criteria;
+  const users = await Employee.find({
+    $or: [{department: criteria}, {position: criteria}],
+  });
+  return res.status(200).json(users);
+}
+
 const deleteEmployeeById = async (req, res) => {
   try {
     const id = req.query.eid;
@@ -67,6 +75,7 @@ const deleteEmployeeById = async (req, res) => {
 
 export default {
   getAllEmployees,
+  filterEmployees,
   createEmployee,
   getEmployeeById,
   updateEmployeeById,

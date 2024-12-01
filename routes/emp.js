@@ -7,6 +7,8 @@ const router = express.Router();
 
 router.get("/employees", empController.getAllEmployees);
 
+router.get("/employees/filter", empController.filterEmployees);
+
 router.post("/employees", validateEmployeeCreate(), validate, empController.createEmployee);
 
 router.get("/employees/:eid", empController.getEmployeeById);

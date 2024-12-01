@@ -3,6 +3,7 @@ import connectToDB from "./data/connectToDB.js";
 import dotenv from "dotenv";
 import cors from 'cors'
 import { userRoutes, empRoutes } from "./routes/index.js";
+import verifyJWT from "./middleware/auth.js";
 
 dotenv.config();
 const app = express();
@@ -19,6 +20,9 @@ app.use(cors(corsOptions));
 app.use(express.json());
 // use routing
 const endpoint = "/api/v1";
+// JWT Auth
+app.use(`${endpoint}/emp`, verifyJWT);
+// routing
 app.use(`${endpoint}/user`, userRoutes);
 app.use(`${endpoint}/emp`, empRoutes);
 
